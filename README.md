@@ -1,34 +1,27 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Crowd-funding
 
-## Getting Started
+CrowdFunding is the defi application which is connected to the ethereum network.
+With the help of this application user can create their own campaign to raise the fund for their project.
+Since smart contract has been used to create the campaign on ethereum network, user can collect the fund in their ethereum account.
+                
+Application UI is based on react.js and next.js to interact with smart contract functionality. Any user can contribute
+to the campaign as per their choice and become the contributor. Campaign creator can raise the request to spend the fund
+for the continuity of project, for which contributors will vote. If request gets more the 50% vote, then creator can spend the fund from smart contract wallet.
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+To run this project on local development:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+          1:  Clone the project into local repo
+          2:  Run npm install
+          3:  Run node compile.js
+          4:  Run node deploy.js ( copy the deployed address from console, paste the same in note.js file )
+          5:  Run npm run dev ( Check at localhost:3000 )
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Note - Create note.js file in root folder and paste the below code :
+  
+    let config = {
+      deployAdd : "copy and paste here,  from above 4th command output",
+      mnemonic : "paste your meta mask mnemonic",
+      networkID : "Paste your RINKYBY OR ROPSTEN network id""
+     }
+     module.exports = config;
