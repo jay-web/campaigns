@@ -1,5 +1,5 @@
 import Web3 from "web3";
-import config from "../note";
+
 
 let web3;
  
