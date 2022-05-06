@@ -15,7 +15,7 @@ export async function getStaticProps({ params }) {
  
     
       let cam = await factory.methods.getDeployedCampaigns().call();
-
+      console.log("cam ", cam)
       if(cam){
       let listOfCampaigns = await Promise.all(
         cam.map(async (el, index) => {
@@ -28,6 +28,8 @@ export async function getStaticProps({ params }) {
           listOfCampaigns: JSON.parse(JSON.stringify(listOfCampaigns)),
           campAddress: JSON.parse(JSON.stringify(cam)),
         },
+        revalidate:60
+        
       };
     }
  
