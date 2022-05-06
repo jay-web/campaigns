@@ -37,13 +37,14 @@ const NewCampaign = (props) => {
     try {
       const accounts = await web3.eth.getAccounts();
       console.log("acounts ", accounts)
+      let accountAddress = accounts[0];
       await factory.methods
         .createCampaign(name, contribution, description)
-        .send({ from: accounts[0] });
+        .send({ from: accountAddress });
         setLoading({status: false, message: ''});
         router.push('/');
     } catch (err) {
-      
+      console.log("error is ", err);
       setLoading({status: false, message: ''});
       setError({ status: true, message: err.message });
     }
