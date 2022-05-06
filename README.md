@@ -19,9 +19,9 @@ To run this project on local development:
 
 Note - Create .env.local file in root folder and paste the below code :
   
-  NEXT_PUBLIC_CROWDFUNDING_ADDRESS=<Your deployed contract address>
-  NEXT_PUBLIC_NETWORK_ID_TESTING=<Your ropsten endpoint with id>
+    NEXT_PUBLIC_CROWDFUNDING_ADDRESS=Your deployed contract address
+    NEXT_PUBLIC_NETWORK_ID_TESTING=Your ropsten endpoint with id
  
 Note - Create .secret file in root folder (don't share anywhere, like on cloud or github>
   
-  MNEMONIC=<Your Mnemonic of metamask wallet>
+     MNEMONIC=<Your Mnemonic of metamask wallet>
