@@ -7,10 +7,13 @@ import web3 from "../../utils/web3";
 import { useRouter } from 'next/router';
 import InfoMessage from "../../components/message";
 
+import styles from "../../styles/Form.module.css";
+
 const initialState = {
   name: '',
   contribution: 0,
-  description: ''
+  description: '',
+  creator: ''
 
 }
 
@@ -27,8 +30,8 @@ const NewCampaign = (props) => {
     setLoading({status: true, message: 'Transacting approving request'});
     setError({status: false, message: ''});
 
-    const {name, contribution, description} = campaignInfo;
-    if(name == '' || contribution <=0 || description == ''){
+    const {name, contribution, description, creator} = campaignInfo;
+    if(name == '' || contribution <=0 || description == '' || creator == ''){
       setLoading({status: false, message: ''});
       setError({status: true, message: 'Please fill up above mandatory fields'});
       return;
@@ -36,13 +39,13 @@ const NewCampaign = (props) => {
 
     try {
       const accounts = await web3.eth.getAccounts();
-      console.log("acounts ", accounts)
+     
       let accountAddress = accounts[0];
       await factory.methods
         .createCampaign(name, contribution, description)
         .send({ from: accountAddress });
         setLoading({status: false, message: ''});
-        router.push('/');
+        router.push('/campaigns');
     } catch (err) {
       console.log("error is ", err);
       setLoading({status: false, message: ''});
@@ -58,22 +61,35 @@ const NewCampaign = (props) => {
   }
 
   return (
-    <Layout>
-      <Form >
+    <Layout background={styles.main}>
+      <Form className={styles.form}>
         <Form.Field>
           <label>Campaign Name</label>
-          <input 
-            placeholder="Campaign Name" 
+          <Input 
+            label="Campaign Name"
+            placeholder="" 
             value={campaignInfo.name}
             onChange={(event) => setCampaignInfo({...campaignInfo, name: event.target.value})}
+            required
+            />
+        </Form.Field>
+        <Form.Field>
+          <label>Campaign Creator Name</label>
+          <Input 
+            label="Creator Name"
+            placeholder="" 
+            value={campaignInfo.creator}
+            onChange={(event) => setCampaignInfo({...campaignInfo, creator: event.target.value})}
+            required
             />
         </Form.Field>
         <Form.Field>
           <label>Campaign Description</label>
-          <input 
-            placeholder="Tell us something about campaign" 
+          <textarea 
+            placeholder="Write something about campaign" 
             value={campaignInfo.description}
             onChange={(event) => setCampaignInfo({...campaignInfo, description: event.target.value})}
+            required
             />
         </Form.Field>
         <Form.Field>
@@ -84,6 +100,7 @@ const NewCampaign = (props) => {
             placeholder="Amount in Wei"
             value={campaignInfo.contribution}
             onChange={(event) => setCampaignInfo({...campaignInfo, contribution: event.target.value})}
+            required
           />
         </Form.Field>
         <InfoMessage error={error} loading={loading} handleDismiss={handleDismiss} />
@@ -96,6 +113,7 @@ const NewCampaign = (props) => {
           onSubmit={onSubmit}
           loading={loading.status}
         />
+        <p style={{ color: "white", fontSize: "1.1rem"}}>(Note: This is dummy application. Do not use real assets )</p>
       </Form>
     </Layout>
   );

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Menu } from 'semantic-ui-react'
 import { useRouter } from 'next/router'
+import styles from "../styles/Header.module.css";
 
  const Header = () => {
   const [activeItem, setActiveItem ] = useState({});
@@ -19,9 +20,9 @@ import { useRouter } from 'next/router'
           name='submit'
           active={activeItem === 'submit'}
           onClick={handleItemClick}
-          
+          className={styles.name}
         >
-          CrowdFunding
+          Campaigns
         </Menu.Item>
 
         <Menu.Menu position='right'>
@@ -37,6 +38,7 @@ import { useRouter } from 'next/router'
             name='help'
             active={activeItem === 'help'}
             onClick={() => router.push('/aboutus')}
+            className={styles.name}
           >
             About us
           </Menu.Item>

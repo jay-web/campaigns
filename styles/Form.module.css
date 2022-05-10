@@ -1,0 +1,15 @@
+.main{
+    background-color:var(--pageLigtColor);
+    height: 100vh;
+}
+
+.form{
+    width: 60vw;
+    margin-left: 7rem;
+    margin-top: 2rem;
+}
+
+.main label{
+    color: white !important;
+    font-size: 1.1rem !important;
+}

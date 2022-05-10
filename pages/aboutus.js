@@ -1,13 +1,13 @@
 import React from 'react';
 import Layout from "../components/layout";
-import { Menu } from 'semantic-ui-react'
+import styles from "../styles/About.module.css";
 
 const AboutUs = () => {
     return (
-        <Layout>
-            <div style={{fontSize: '1.4rem', fontFamily: 'Bitter, serif'}}>
-            <h1>CrowdFunding</h1>
-            <p> CrowdFunding is the defi application which is connected to the ethereum network. 
+        <Layout background={styles.main}>
+            <div >
+            <h1 className={styles.heading}>Campaigns</h1>
+            <p> Campaigns is the defi application which is connected to the ethereum network. 
                 With the help of this application user can create their own campaign to raise the fund for their project.
                 Since smart contract has been used to create the campaign on ethereum network and collect the fund in their account.
                 </p>

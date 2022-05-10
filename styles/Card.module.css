@@ -1,0 +1,47 @@
+.campaignBox {
+  width: 300px;
+  height: max-content;
+  padding: 1rem;
+ margin: 1rem;
+  /* background: rgb(5, 43, 7); */
+  background: rgb(255, 255, 255, 0.9)  ;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  cursor: pointer;
+  color: black;
+  
+}
+
+.button{
+  background-color: rgb(10, 25, 41, 0.9);
+  padding: .5rem 1rem;
+  border: none;
+  color: white;
+  letter-spacing: .1rem;
+}
+
+
+.button a{
+  text-decoration: none !important;
+  color: white;
+}
+
+.button :hover{
+  color: black;
+  cursor: pointer;
+}
+
+.content{
+    margin: 1rem 0px ;
+    padding: .5rem 0px;
+    font-family: 'Bitter', serif;
+
+}
+
+.imageStyle{
+    border-radius: 5px;
+    height: 200px;
+}

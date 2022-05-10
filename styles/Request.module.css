@@ -1,0 +1,8 @@
+.main{
+    background-color:var(--pageLightColor);
+    height: 100vh;
+    
+}
+.name{
+    font-family: var(--mainFontFamily);
+}

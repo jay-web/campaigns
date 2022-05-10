@@ -6,6 +6,9 @@ import { useRouter } from "next/router";
 import RequestForm from "../../../../components/newRequest";
 import { Grid, Label, Icon } from "semantic-ui-react";
 import Layout from "../../../../components/layout";
+import ContractAddress from "../../../../components/contractAddress";
+
+import styles from "../../../../styles/NewRequest.module.css";
 
 const initialState = {
   recipient: "",
@@ -18,6 +21,7 @@ const NewRequest = (props) => {
   const [loading, setLoading] = useState({ status: false, message: "" });
   const [error, setError] = useState({ status: false, message: "" });
   const router = useRouter();
+  const campaignId = router.query.campaignId;
 
   const changeHandler = (event) => {
     event.preventDefault();
@@ -45,7 +49,7 @@ const NewRequest = (props) => {
         .createRequest(description, value, recipient)
         .send({ from: accounts[0] });
       setLoading({ status: false, message: "" });
-      router.push("/");
+      router.push(`/campaign/${campaignId}`);
     } catch (err) {
       setLoading({ status: false, message: "" });
       setError({ status: true, message: err.message });
@@ -57,16 +61,16 @@ const NewRequest = (props) => {
   };
 
   return (
-    <Layout>
+    <Layout background={styles.main}>
       <Grid>
         <Grid.Row>
           <Grid.Column width={12}>
-            <h3>Campaign :{router.query.campaignId}</h3>
-          
+            
+            <ContractAddress id={campaignId} />
           </Grid.Column>
         </Grid.Row>
       </Grid>
-      <h1></h1>
+      
       <RequestForm
         onSubmit={onSubmit}
         loading={loading}

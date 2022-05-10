@@ -10,51 +10,8 @@ import campaignInstance from "../../../../utils/campaign";
 import InfoMessage from "../../../../components/message";
 import factory from "../../../../utils/factory";
 
-// export async function getStaticProps({ params }) {
-
-//   let campaign = await campaignInstance(params.campaignId);
-//   let summary = await campaign.methods.getSummary().call();
-//   console.log("reached here")
-//   let requests = await Promise.all(
-//     Array(parseInt(summary[3]))
-//       .fill()
-//       .map(async (value, index) => {
-//         return await campaign.methods.requests(index).call();
-//       })
-//   );
-//       console.log("here too")
-//   return {
-//     props:{
-//       name: summary[0],
-//     manager: summary[1],
-//     minimumContribution: summary[2],
-//     numberOfRequests: summary[3],
-//     approversCount: summary[4],
-//     fundReceived: summary[5],
-//     description: summary[6],
-//     id: params.campaignId,
-//     campaign: campaign,
-//     requests: requests,
-//     }
-//   };
-// }
-
-// export async function getStaticPaths() {
-//   let cam = await factory.methods.getDeployedCampaigns().call();
-
-//   let paths = cam.map((campaignId) => {
-//     return {
-//       params: {
-//         campaignId: campaignId,
-//       },
-//     };
-//   });
-
-//   return {
-//     paths: paths,
-//     fallback: true,
-//   };
-// }
+import styles from "../../../../styles/Request.module.css";
+import ContractAddress from "../../../../components/contractAddress";
 
 const Requests = (props) => {
   const router = useRouter();
@@ -108,6 +65,7 @@ const Requests = (props) => {
       setLoading({ status: false, message: "" });
 
       router.replace(`/campaign/${encodeURIComponent(id)}/requests`);
+      
     } catch (err) {
       setLoading({ status: false, message: "" });
       setError({ status: true, message: err.message });
@@ -124,7 +82,7 @@ const Requests = (props) => {
       await campaign.methods.finalizeRequest(index).send({ from: accounts[0] });
 
       setLoading({ status: false, message: "Transaction successfull" });
-      router.replace(`/campaign/${encodeURIComponent(id)}/requests`);
+      router.replace(`/campaign/${encodeURIComponent(id)}`);
     } catch (err) {
       setLoading({ status: false, message: "" });
       setError({ status: true, message: err.message });
@@ -143,14 +101,12 @@ const Requests = (props) => {
   return (
     <React.Fragment>
       {data ? (
-        <Layout>
+        <Layout background={styles.main}>
           <Grid>
             <Grid.Row>
               <Grid.Column width={12}>
-                <h3>Campaign :{data?.name}</h3>
-                <Label style={{ marginBottom: "1rem" }}>
-                  <Icon name="address card" /> {id}
-                </Label>
+                <h3 className={styles.name}>Campaign :{data?.name}</h3>
+                <ContractAddress id={id} />
               </Grid.Column>
               <Grid.Column width={4}>
                 <CustomButton
@@ -159,7 +115,7 @@ const Requests = (props) => {
                   floated={true}
                   onSubmit={() =>
                     router.push(
-                      `/campaign/${encodeURIComponent(id)}/requests/new`
+                      `/campaign/${id}/requests/new`
                     )
                   }
                   loading={false}
@@ -188,31 +144,6 @@ const Requests = (props) => {
   );
 };
 
-// Requests.getInitialProps = async (props) => {
-//   const campaign = await campaignInstance(props.query.campaignId);
 
-//   let summary = await campaign.methods.getSummary().call();
-
-//   let requests = await Promise.all(
-//     Array(parseInt(summary[3]))
-//       .fill()
-//       .map(async (value, index) => {
-//         return await campaign.methods.requests(index).call();
-//       })
-//   );
-
-//   return {
-//     name: summary[0],
-//     manager: summary[1],
-//     minimumContribution: summary[2],
-//     numberOfRequests: summary[3],
-//     approversCount: summary[4],
-//     fundReceived: summary[5],
-//     description: summary[6],
-//     id: props.query.campaignId,
-//     campaign: campaign,
-//     requests: requests,
-//   };
-// };
 
 export default Requests;

@@ -6,7 +6,7 @@ const RequestsTable = (props) => {
   const { requests, contributor, onApprove, onFinalize } = props;
 
   return (
-    <Table color="red" inverted>
+    <Table  inverted>
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell>ID</Table.HeaderCell>
@@ -37,8 +37,8 @@ const requestRows = (requests, contributor, onApprove, onFinalize) => {
         </Table.Cell>
         <Table.Cell>{ele.complete ? "Yes" : "No"}</Table.Cell>
         <Table.Cell>
-        <Button animated primary onClick={() => onApprove(index)}  size="tiny">
-            <Button.Content visible>Approve</Button.Content>
+        <Button animated primary onClick={() => onApprove(index)}  size="tiny" disabled={ele.complete}>
+            <Button.Content visible>{ ele.complete ? "Already Approved" : "Approve" } </Button.Content>
             <Button.Content hidden>
             <Icon name="thumbs up" />
             </Button.Content>

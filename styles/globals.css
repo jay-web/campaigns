@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@1,500&display=swap');
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    
+}
+body::-webkit-scrollbar {
+  width: 0em;
+  background-color: transparent;
 }
 
 a {
@@ -13,4 +19,10 @@ a {
 
 * {
   box-sizing: border-box;
+}
+:root {
+  --buttonColor: "#f44336";
+  --mainFontFamily: 'Bitter', serif;
+  --pageLigtColor: rgb(10, 25, 41, 0.6);
+  --pageMainColor: rgb(10, 25, 41, 0.9);
 }

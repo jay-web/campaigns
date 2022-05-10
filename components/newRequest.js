@@ -4,6 +4,8 @@ import Layout from "./layout";
 import CustomButton from "./customButton";
 import InfoMessage from "./message";
 
+import styles from "../styles/NewRequest.module.css";
+
 const RequestForm = (props) => {
   const requestInfo = props.info;
   const loading = props.loading;
@@ -15,10 +17,10 @@ const RequestForm = (props) => {
 
   return (
     
-      <Form error={error.status}>
+      <Form error={error.status} className={styles.form}>
         <Form.Field>
           <label>Request Description</label>
-          <input 
+          <textarea 
             placeholder="Request Description" 
             value={requestInfo.description}
             onChange={changeHandler}
@@ -35,15 +37,18 @@ const RequestForm = (props) => {
             value={requestInfo.value}
             onChange={changeHandler}
             name="value"
+            required
             />
         </Form.Field>
         <Form.Field>
           <label>Recipient </label>
-          <input
-            placeholder="Recipient Address"
+          <Input
+            label="Recipient Address"
+            placeholder=""
             value={requestInfo.recipient}
             onChange={changeHandler}
             name="recipient"
+            required
           />
         </Form.Field>
         <InfoMessage error={error} loading={loading} handleDismiss={handleDismiss}/>
@@ -54,6 +59,7 @@ const RequestForm = (props) => {
           floated={false}
           onSubmit={onSubmit}
           loading={loading.status}
+          required
         />
       </Form>
     

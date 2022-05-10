@@ -1,0 +1,9 @@
+.main{
+    background-color:var(--pageLigtColor);
+    height: 100vh;
+    font-family: var(--mainFontFamily);
+    
+}
+.heading{
+    font-family: var(--mainFontFamily);
+}

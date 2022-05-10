@@ -8,8 +8,12 @@ import { Icon, Label, Grid } from "semantic-ui-react";
 import ContributionForm from "../../../components/contribute";
 import factory from "../../../utils/factory";
 
+import styles from "../../../styles/Campaign.module.css";
+
+import ContractAddress from "../../../components/contractAddress";
+
 export async function getStaticProps({ params }) {
-  console.log("unique campaign page props", params);
+ 
 
   let campaign = await campaignInstance(params.campaignId);
   let summary = await campaign.methods.getSummary().call();
@@ -52,17 +56,20 @@ const CampaignDetails = (props) => {
     return <div>Loading ...</div>;
   }
   return (
-    <Layout>
-      <h1>Campaign : {props.name.toUpperCase()}</h1>
-      <Label style={{ marginBottom: "1rem" }}>
-        <Icon name="address card" /> {address}
-      </Label>
+    <Layout background={styles.main}>
+      <h1 className={styles.heading}>Campaign : {props.name.toUpperCase()}</h1>
+      <ContractAddress id={address} />
       <Grid>
         <Grid.Column width={10}>
           <DetailCard details={props} />
         </Grid.Column>
         <Grid.Column width={6}>
+          
           <ContributionForm id={address} />
+          
+          <p>( Note: This is dummy application.Do ntt use real assets. )</p>
+          
+          
         </Grid.Column>
       </Grid>
     </Layout>

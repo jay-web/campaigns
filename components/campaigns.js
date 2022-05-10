@@ -1,13 +1,14 @@
 import React from "react";
-import { Card, Image } from "semantic-ui-react";
+import { Card, Image, Grid } from "semantic-ui-react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import styles from "../styles/Card.module.css";
 
 const Campaigns = (props) => {
   const router = useRouter();
 
   const { campaigns, campAddress } = props;
-  
+
   const renderCampaigns = () => {
     let items = campaigns.map((campaign, index) => {
       let name = campaign[0];
@@ -21,25 +22,23 @@ const Campaigns = (props) => {
       let image = `${index + 1 < 4 ? index + 1 : 1}`;
 
       return (
-        <Card key={index}>
-          <Image src={`/image-${image}.jpg`} wrapped ui={false} alt={name}/>
-          <Card.Content>
-            <Card.Header>{name}</Card.Header>
-            <Card.Meta>
-              <span className="date"></span>
-            </Card.Meta>
-            <Card.Description>{description}</Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-          <Link href={`/campaign/${encodeURIComponent(deployAddress)}`}>
-              <a>
-              View Campaign
-              </a>
+        
+          <div key={index} className={styles.campaignBox}>
+            <Image src={`/image-${image}.jpg`}  alt={name} className={styles.imageStyle} />
+            <div>
+              <h2 className={styles.content}>{name}</h2>
 
-             
-            </Link>
-          </Card.Content>
-        </Card>
+              <h4 className={styles.content} >{description}</h4>
+            </div>
+            <div>
+            <button  className={styles.button}>
+              <Link href={`/campaign/${encodeURIComponent(deployAddress)}`}>
+                View Campaign
+              </Link>
+              </button>
+            </div>
+          </div>
+          
       );
     });
 
@@ -47,7 +46,7 @@ const Campaigns = (props) => {
     return items;
   };
 
-  return <Card.Group> {renderCampaigns()} </Card.Group>;
+  return <> {renderCampaigns()} </>;
 };
 
 export default Campaigns;

@@ -1,0 +1,25 @@
+.box{
+    /* background-color: cadetblue; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 95%;
+    margin: 1rem auto;
+    /* align-content: flex-start;
+    align-items: flex-start; */
+    
+    
+}
+
+.main{
+    /* background-color:darkgoldenrod; */
+    background-color: var(--pageMainColor)
+    
+}
+@media (max-width: 600px) {
+    .box{
+        justify-content: center;
+    }
+  }
+  

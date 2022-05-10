@@ -18,8 +18,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -55,8 +54,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [],
@@ -69,8 +67,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"minimum\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"}],\"name\":\"createCampaign\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getDeployedCampaigns\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isCampaignAvailable\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"numberOfCampaigns\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/CrowdFunding.sol\":\"CrowdFunding\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Campaign.sol\":{\"keccak256\":\"0xbb25b1b38c31a9cec6030637620cf5b98d9e01d67ad85f9d3a5a1328ba1677b2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://f04d793c8dda39ca89f8f32ab1c7f9371a4c1b53c178d233042073ec7c7f74e2\",\"dweb:/ipfs/QmaAAfWUwZfNgDPHPDtH1ioL3jKGadUkJomWJoCuFTszVf\"]},\"project:/contracts/CrowdFunding.sol\":{\"keccak256\":\"0xa0e9870cf505327fd73cdd7d282f0b37073fa0e254aba42e4bf92d906eb152c2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://edeccd6673c0bdf92b61fcd1b5bfd84234de428911fa64f8298549d0dc9e9b27\",\"dweb:/ipfs/QmQ8uaghKAhHvBMekNpQSZr31vAkQeKhKmMoTNus515Vfn\"]}},\"version\":1}",
@@ -6106,13 +6103,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x13dd91E536e0c74fd2347e47f0070F2131b53b89",
-      "transactionHash": "0xe5a5d740ea2fcb2f5124c1370f255875d9edb5c5bb2bf12c672d5efb7d93cd4a"
+      "address": "0x1755EBB966D5CfEEb0589aB5f6C15F918b313366",
+      "transactionHash": "0x1602db1a8506752e9043fa49f40e7c9c141bbb9ddd9378e6fecf3eb321d8e4e5"
     }
   },
   "schemaVersion": "3.4.5",
-  "updatedAt": "2022-05-06T17:32:36.209Z",
-  "networkType": "ethereum",
+  "updatedAt": "2022-05-10T13:41:56.120Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
