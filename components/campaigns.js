@@ -21,6 +21,8 @@ const Campaigns = (props) => {
       let deployAddress = campAddress[index];
       let image = `${index + 1 < 4 ? index + 1 : 1}`;
 
+
+
       return (
         
           <div key={index} className={styles.campaignBox}>
@@ -28,7 +30,7 @@ const Campaigns = (props) => {
             <div>
               <h2 className={styles.content}>{name}</h2>
 
-              <h4 className={styles.content} >{description}</h4>
+              <h4 className={styles.content} >{description.slice(0, 70)}...</h4>
             </div>
             <div>
             <button  className={styles.button}>

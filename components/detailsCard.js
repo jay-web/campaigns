@@ -11,7 +11,8 @@ const DetailCard = (props) => {
     approversCount,
     fundReceived,
     manager,
-    id
+    id,
+    description
   } = props.details;
   return (
     <Card.Group>
@@ -20,6 +21,14 @@ const DetailCard = (props) => {
           header="Creator of the campaign"
           meta="Address of the creator who has started this campaign"
           description={manager}
+        />
+       
+      </Card>
+      <Card fluid>
+      
+        <Card.Content
+          header="Campaign description"
+          description={description}
         />
       </Card>
       <Card>

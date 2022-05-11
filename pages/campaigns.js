@@ -30,7 +30,7 @@ export async function getStaticProps({ params }) {
           listOfCampaigns: JSON.parse(JSON.stringify(listOfCampaigns)),
           campAddress: JSON.parse(JSON.stringify(cam)),
         },
-        revalidate:60
+        revalidate:7
         
       };
     }

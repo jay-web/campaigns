@@ -56,7 +56,7 @@ const ContibutionForm = (props) => {
   return (
     <Form error={error.errorStatus}>
       <Form.Field>
-        <label>Contribution </label>
+        <label style={{color: "white"}}>Contribution </label>
         <Input
           label="ether"
           labelPosition="right"
