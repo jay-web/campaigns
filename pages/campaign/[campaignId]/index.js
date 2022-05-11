@@ -67,7 +67,7 @@ const CampaignDetails = (props) => {
           
           <ContributionForm id={address} />
           
-          <p>( Note: This is dummy application.Do ntt use real assets. )</p>
+          <p>( Note: This is dummy application.Do not use real assets. )</p>
           
           
         </Grid.Column>
