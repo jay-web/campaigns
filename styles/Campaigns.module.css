@@ -5,7 +5,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     width: 95%;
-    height: 100%;
+    
     margin: 1rem auto;
     /* align-content: flex-start;
     align-items: flex-start; */
@@ -15,7 +15,8 @@
 
 .main{
     /* background-color:darkgoldenrod; */
-    background-color: var(--pageMainColor)
+    background-color: var(--pageMainColor);
+    height: 100vh;
     
 }
 @media (max-width: 600px) {

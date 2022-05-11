@@ -19,7 +19,7 @@ const RequestsTable = (props) => {
           <Table.HeaderCell>Finalize</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
-      <Table.Body>{requestRows(requests, contributor, onApprove, onFinalize)}</Table.Body>
+      <Table.Body >{requestRows(requests, contributor, onApprove, onFinalize)}</Table.Body>
     </Table>
   );
 };

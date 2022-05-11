@@ -60,10 +60,10 @@ const CampaignDetails = (props) => {
       <h1 className={styles.heading}>Campaign : {props.name.toUpperCase()}</h1>
       <ContractAddress id={address} />
       <Grid>
-        <Grid.Column width={10}>
+        <Grid.Column computer={10} mobile={16}>
           <DetailCard details={props} />
         </Grid.Column>
-        <Grid.Column width={6}>
+        <Grid.Column computer={6} mobile={16}>
           
           <ContributionForm id={address} />
           
