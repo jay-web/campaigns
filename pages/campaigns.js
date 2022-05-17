@@ -29,7 +29,7 @@ export async function getStaticProps({ params }) {
         
           const response = await loadData(camp[6]);
           let description = response?.data?.description || "";
-          let imageurl = response?.data?.image[0] || "";
+          let imageurl = response?.data?.image[0] || "default.jpg";
         
          camp = {...camp, description: description , imageurl: imageurl}
         
