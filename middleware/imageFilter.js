@@ -16,7 +16,7 @@ export const resizeUploadPhoto = async (req, res, next) => {
   req.file.filename = `campaign-${imageId}.jpeg`;
 
   await sharp(req.file.buffer)
-      .toFile(`public/campaigns/${req.file.filename}`);
+      .toFile(`public/${req.file.filename}`);
 
 
   next();

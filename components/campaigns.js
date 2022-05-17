@@ -28,11 +28,11 @@ const Campaigns = (props) => {
       return (
         
           <div key={index} className={styles.campaignBox}>
-            <Image src={`/campaigns/${image}`}  alt={name} className={styles.imageStyle} />
+            <Image src={`${image}`}  alt={name} className={styles.imageStyle} />
             <div>
               <h2 className={styles.content}>{name}</h2>
 
-              <h4 className={styles.content} >{description.slice(0, 70)}...</h4>
+              <h4 className={styles.content} >{description ? description.slice(0, 70) : null}...</h4>
             </div>
             <div>
             <button  className={styles.button}>

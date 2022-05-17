@@ -7,6 +7,7 @@ export async function loadData(hash){
         baseUrl = `https://campaigns-lovat.vercel.app`;
     }
     try{
+      console.log("baseurl ", baseUrl)
         const response = await axios(`${baseUrl}/api/fetchCampaign?imageHash=${hash}`);
        
         return response;
