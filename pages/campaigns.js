@@ -11,7 +11,9 @@ import Layout from "../components/layout";
 import { useRouter } from "next/router";
 import { Grid } from "semantic-ui-react";
 
-import styles from "../styles/Campaigns.module.css"
+import styles from "../styles/Campaigns.module.css";
+
+import { loadData } from "../utils/fetchData";
 
 export async function getStaticProps({ params }) {
  
@@ -22,9 +24,21 @@ export async function getStaticProps({ params }) {
       let listOfCampaigns = await Promise.all(
         cam.map(async (el, index) => {
           let campaign = await campaignInstance(el);
-          return await campaign.methods.getSummary().call();
+        
+          let camp = await campaign.methods.getSummary().call();
+        
+          const response = await loadData(camp[6]);
+          let description = response?.data?.description || "";
+          let imageurl = response?.data?.image[0] || "";
+        
+         camp = {...camp, description: description , imageurl: imageurl}
+        
+          return camp;
         })
       );
+     
+       
+      
       return {
         props: {
           listOfCampaigns: JSON.parse(JSON.stringify(listOfCampaigns)),

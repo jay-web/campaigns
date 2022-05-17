@@ -10,7 +10,7 @@ contract Campaign {
     uint public numberOfRequests;
     uint public approversCount;
     uint public fundReceived;
-    string public description;
+    string private imageHash;
 
     struct Request {
         string description;
@@ -26,11 +26,11 @@ contract Campaign {
         _;
     }
 
-    constructor (string memory campaignName, uint minimum, address creator, string memory desc) {
+    constructor (string memory campaignName, uint minimum, address creator, string memory imageHa) {
         manager = creator;
         minimumContribution = minimum;
-        description = desc;
         name = campaignName;
+        imageHash = imageHa;
     }
 
     function contribute() public payable {
@@ -90,7 +90,7 @@ contract Campaign {
             numberOfRequests,
             approversCount,
             fundReceived,
-            description
+            imageHash
         );
     }
 

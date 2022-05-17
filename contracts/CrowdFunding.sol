@@ -5,12 +5,15 @@ import "./Campaign.sol";
 
 contract CrowdFunding {
     address[] public numberOfCampaigns;
+   
   
 
-    function createCampaign(string memory name, uint minimum, string memory description) public {
-        Campaign newAddress = new Campaign(name, minimum, msg.sender, description);
+    function createCampaign(string memory name, uint minimum, string memory imageHash) public  {
+        Campaign newAddress = new Campaign(name, minimum, msg.sender, imageHash);
         
         numberOfCampaigns.push(address(newAddress));
+        
+        
     }
 
     function isCampaignAvailable() public view returns(bool){
@@ -18,12 +21,11 @@ contract CrowdFunding {
     }
 
     function getDeployedCampaigns() public view returns(address[] memory){
-        // if(numberOfCampaigns.length > 0){
-        //     return numberOfCampaigns;
-        // }
-        // revert("No Campaign yet published");
+       
         return numberOfCampaigns;
     }   
+
+   
 }
 
 

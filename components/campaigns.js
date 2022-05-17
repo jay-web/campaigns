@@ -10,6 +10,7 @@ const Campaigns = (props) => {
   const { campaigns, campAddress } = props;
 
   const renderCampaigns = () => {
+   
     let items = campaigns.map((campaign, index) => {
       let name = campaign[0];
       let address = campaign[1];
@@ -17,16 +18,17 @@ const Campaigns = (props) => {
       // let requests = campaign[3];
       // let contributors = campaign[4];
       // let fundReceived = campaign[5];
-      let description = campaign[6];
+      let description = campaign['description'];
       let deployAddress = campAddress[index];
-      let image = `${index + 1 < 4 ? index + 1 : 1}`;
+      // let image = `${index + 1 < 4 ? index + 1 : 1}`;
+      let image = campaign['imageurl'];
 
 
 
       return (
         
           <div key={index} className={styles.campaignBox}>
-            <Image src={`/image-${image}.jpg`}  alt={name} className={styles.imageStyle} />
+            <Image src={`/campaigns/${image}`}  alt={name} className={styles.imageStyle} />
             <div>
               <h2 className={styles.content}>{name}</h2>
 

@@ -64,7 +64,7 @@ const Requests = (props) => {
 
       setLoading({ status: false, message: "" });
 
-      router.replace(`/campaign/${encodeURIComponent(id)}/requests`);
+      router.replace(`/campaign/${encodeURIComponent(id)}/`);
       
     } catch (err) {
       setLoading({ status: false, message: "" });
