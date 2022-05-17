@@ -70,7 +70,7 @@ const CampaignIndex = (props) => {
     );
     console.log(updatedList)
     setListOfCamp(updatedList);
-  }, [props.listOfCampaigns]);
+  }, []);
 
   return (
     <>

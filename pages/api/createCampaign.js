@@ -36,7 +36,8 @@ apiRoute.post(async (req, res) => {
     "campaign",
     "description",
     "imageHash",
-    "image"
+    "image",
+    
   );
     
   if (req.file) filterRequest.image = req.file.filename;
