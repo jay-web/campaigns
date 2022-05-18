@@ -24,13 +24,13 @@ const DetailCard = (props) => {
         />
        
       </Card>
-      <Card fluid>
+      {/* <Card fluid>
       
         <Card.Content
           header="Campaign description"
           description={description}
         />
-      </Card>
+      </Card> */}
       <Card>
         <Card.Content
           header="Minimum Contribution ( In Wei )"

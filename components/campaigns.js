@@ -14,6 +14,7 @@ const Campaigns = (props) => {
   const renderCampaigns = () => {
    
     let items = campaigns.map((campaign, index) => {
+     
       let name = campaign[0];
       let address = campaign[1];
       // let minimum = campaign[2];

@@ -66,6 +66,7 @@ const CampaignIndex = (props) => {
   
         let camp = await campaign.methods.getSummary().call();
         const response = await loadData(camp[6]);
+        
         let description = response?.data?.description || "";
         let imageurl = response?.data?.image[0] || "";
   
@@ -74,7 +75,7 @@ const CampaignIndex = (props) => {
         return camp;
       })
       );
-      console.log(updatedList)
+     
       setListOfCamp(updatedList);
       setCampAddress(cam)
     }
