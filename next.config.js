@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['http://localhost:3000','https://campaigns-lovat.vercel.app'],
+    domains: ["localhost:3000", "campaigns-dapp.s3.amazonaws.com"]
   },
 }
 

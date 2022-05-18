@@ -12,6 +12,8 @@ import axios from "axios";
 
 import crypto from "crypto";
 
+import handleUpload from "../../middleware/fileUploaderToS3";
+
 const initialState = {
   name: '',
   contribution: 0,
@@ -53,15 +55,15 @@ const NewCampaign = (props) => {
       let imageHash = image.name + Date.now();
       imageHash = crypto.createHash('sha1').update(imageHash).digest('hex');
 
-
+    
+    
      const newCampaign =  await factory.methods
         .createCampaign(name, contribution, imageHash)
         .send({ from: accountAddress });
         setLoading({status: false, message: ''});
 
         // Now save the campaign other meta data into mongo db
-        
-        
+
         let formData = new FormData();
         formData.append("image", image, image.name);
         formData.append("name", creator);

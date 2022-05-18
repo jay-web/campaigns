@@ -1,11 +1,13 @@
 import React from "react";
-import { Card, Image, Grid } from "semantic-ui-react";
+import { Card, Grid } from "semantic-ui-react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import styles from "../styles/Card.module.css";
+import Image from 'next/image'
 
 const Campaigns = (props) => {
   const router = useRouter();
+  let imageURL = "https://campaigns-dapp.s3.amazonaws.com/";
 
   const { campaigns, campAddress } = props;
 
@@ -28,7 +30,7 @@ const Campaigns = (props) => {
       return (
         
           <div key={index} className={styles.campaignBox}>
-            <Image src={`${image}`}  alt={name} className={styles.imageStyle} />
+            <Image src={`${imageURL}${image}`}  alt={name} className={styles.imageStyle} height={200} width={300} />
             <div>
               <h2 className={styles.content}>{name}</h2>
 
