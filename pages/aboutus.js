@@ -16,6 +16,7 @@ const AboutUs = () => {
                 for the continuity of project, for which contributors will vote. If request gets more the 50% vote, then creator can spend the fund from smart contract wallet.
 
             </p>
+            <p> Application is deployed on Ropsten public testing network. You may use dummy ethers to create your campaign or denote to your favourite dummy campaign to test.</p>
             </div>
            
         </Layout>
