@@ -9,78 +9,78 @@ import CustomButton from "../components/customButton";
 
 import Layout from "../components/layout";
 import { useRouter } from "next/router";
-import { Grid } from "semantic-ui-react";
+
 
 import styles from "../styles/Campaigns.module.css";
 
 import { loadData } from "../utils/fetchData";
 
-// export async function getStaticProps({ params }) {
-//   let cam = await factory.methods.getDeployedCampaigns().call();
+import Loading from "../components/loader";
 
-//   if (cam) {
-//     let listOfCampaigns = await Promise.all(
-//       cam.map(async (el, index) => {
-//         let campaign = await campaignInstance(el);
+export async function getStaticProps({ params }) {
+  
+  let cam = await factory.methods.getDeployedCampaigns().call();
 
-//         let camp = await campaign.methods.getSummary().call();
+  if (cam) {
+    let listOfCampaigns = await Promise.all(
+      cam.map(async (el, index) => {
+        let campaign = await campaignInstance(el);
+        let camp = await campaign.methods.getSummary().call();
+        return camp;
+      })
+    );
 
-//         //   const response = await loadData(camp[6]);
-//         //   let description = response?.data?.description || "";
-//         //   let imageurl = response?.data?.image[0] || "";
+    return {
+      props: {
+        listOfCampaigns: JSON.parse(JSON.stringify(listOfCampaigns)),
+        campAddress: JSON.parse(JSON.stringify(cam)),
+      },
+      revalidate: 7,
+    };
+  }
 
-//         //  camp = {...camp, description: description , imageurl: imageurl}
-
-//         return camp;
-//       })
-//     );
-
-//     return {
-//       props: {
-//         listOfCampaigns: JSON.parse(JSON.stringify(listOfCampaigns)),
-//         campAddress: JSON.parse(JSON.stringify(cam)),
-//       },
-//       revalidate: 7,
-//     };
-//   }
-
-//   return {
-//     props: {
-//       listOfCampaigns: [],
-//       campAddress: [],
-//     },
-//   };
-// }
+  return {
+    props: {
+      listOfCampaigns: [],
+      campAddress: [],
+    },
+  };
+}
 
 const CampaignIndex = (props) => {
   const router = useRouter();
-  const [listOfCamp, setListOfCamp] = useState();
-  const [campAddress, setCampAddress] = useState();
+  const [listOfCamp, setListOfCamp] = useState(props.listOfCampaigns);
+  const [campAddress, setCampAddress] = useState(props.campAddress);
+  const [showData, setShowData] = useState(false);
 
   useEffect(async () => {
-    let cam = await factory.methods.getDeployedCampaigns().call();
-    if(cam){
+    // let cam = await factory.methods.getDeployedCampaigns().call();
+    if (campAddress) {
       let updatedList = await Promise.all(
-        cam.map(async (el, index) => {
-          let campaign = await campaignInstance(el);
-  
-        let camp = await campaign.methods.getSummary().call();
-        const response = await loadData(camp[6]);
-        
-        let description = response?.data?.description || "";
-        let imageurl = response?.data?.image[0] || "";
-  
-        camp = { ...camp, description: description, imageurl: imageurl };
-  
-        return camp;
-      })
+        listOfCamp.map(async (el, index) => {
+          // let campaign = await campaignInstance(el);
+          console.log("el ", el);
+          
+          // let camp = await campaign.methods.getSummary().call();
+          // console.log("camp ", camp);
+
+          const response = await loadData(el[6]);
+
+          let description = response?.data?.description || "";
+          let imageurl = response?.data?.image[0] || "";
+
+          el = { ...el, description: description, imageurl: imageurl };
+
+          return el;
+        })
       );
-     
+
       setListOfCamp(updatedList);
-      setCampAddress(cam)
+      // setCampAddress(cam);
+      setShowData(true);
     }
-    
-  }, []);
+   
+  }, [campAddress]);
 
   return (
     <>
@@ -93,9 +93,15 @@ const CampaignIndex = (props) => {
           loading={false}
         />
 
-        { listOfCamp && campAddress ? <div className={styles.box}>
-          <Campaigns campaigns={listOfCamp} campAddress={campAddress} />
-        </div> : null }
+        {
+        showData  ? (
+          <div className={styles.box}>
+            <Campaigns campaigns={listOfCamp} campAddress={campAddress} />
+          </div>
+        ) :  <Loading />
+        
+        }
+       
       </Layout>
     </>
   );
